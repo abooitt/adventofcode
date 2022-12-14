@@ -1,4 +1,9 @@
 BEGIN {
+  if (part=="") {
+    part=1
+  } else {
+    part=2
+  }
   heights="abcdefghijklmnopqrstuvwxyz"
   nh = patsplit(heights,hlevel,/./)
   for (h in hlevel) {
@@ -26,17 +31,22 @@ BEGIN {
   }
 }
 END {
-  numstartpositions=0
-  y = 0
-  while (y++ < NR) {
-    x = 0
-    while (x++ < gw) {
-      #printf(" %s:%s",grid[x][y],gh[x][y])
-      if (grid[x][y] == "a") {
-        startpositions[x][y] = 1
+  if (part==1) {
+    numstartpositions=1
+    startpositions[startx][starty]=1
+  } else {
+    numstartpositions=0
+    y = 0
+    while (y++ < NR) {
+      x = 0
+      while (x++ < gw) {
+        #printf(" %s:%s",grid[x][y],gh[x][y])
+        if (grid[x][y] == "a") {
+          startpositions[x][y] = 1
+        }
       }
+#      printf("\n")
     }
-#    printf("\n")
   }
   for (startx in startpositions) {
     for (starty in startpositions[startx]) {

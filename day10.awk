@@ -1,4 +1,7 @@
 BEGIN {
+  if (part == "") {
+    part=1
+  }
   x=1
   p=0
 }
@@ -25,24 +28,28 @@ BEGIN {
       j++
     }
 # part 1:
-#  print(c,x,newx,ss,sum)
-    s=-1
-    draw=0
-    while (s < 2) {
-      if (p%40 == x+s) {
-        draw=1
-        break
-      }
-      s++
-    }
-    if (draw==1) {
-      printf("#")
+    if (part==1) {
+      print(c,x,newx,ss,sum)
     } else {
-      printf(".")
-    }
-    p++
-    if (p%40 == 0) {
-      printf("\n")
+# part 2
+      s=-1
+      draw=0
+      while (s < 2) {
+        if (p%40 == x+s) {
+          draw=1
+          break
+        }
+        s++
+      }
+      if (draw==1) {
+        printf("#")
+      } else {
+        printf(".")
+      }
+      p++
+      if (p%40 == 0) {
+        printf("\n")
+      }
     }
   }
   x=newx

@@ -1,3 +1,10 @@
+BEGIN {
+  if (part=="") {
+    part=1
+  } else {
+    part=2
+  }
+}
 /^\[/ {
   pair++
   b=0
@@ -15,7 +22,9 @@
 }
 END {
   printf("Sum of indices of pairs in the right order: %s\n",sum)
-  #exit
+  if (part==1) {
+    exit
+  }
   packet++
   pack[packet]="[[2]]"
   packet++

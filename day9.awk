@@ -5,7 +5,9 @@ BEGIN {
   maxx=0
   miny=0
   maxy=0
-  rl=9
+  if (rl=="") {
+    rl=1
+  }
   i=0
   while (i++ < rl) {
     xt[i]=0

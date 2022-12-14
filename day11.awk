@@ -1,4 +1,9 @@
 BEGIN {
+  if (part=="") {
+    part=1
+  } else {
+    part=2
+  }
   modulus = 1
 }
 /^Monkey [0-9]+:/ {
@@ -23,9 +28,9 @@ BEGIN {
   t=a[2]
   patsplit(t,a,/[0-9]+/)
   test[m]=a[1]
-#  if (test[m]!=2) {
+  if (part==2) {
     modulus = modulus * test[m]
-#  }
+  }
 }
 /^    If true:/ {
   iftrue[m]=$NF
@@ -34,7 +39,11 @@ BEGIN {
   iffalse[m]=$NF
 }
 END {
-  damping=1
+  if (part==1) {
+    damping=3
+  } else {
+    damping=1
+  }
   for (i in items) {
     num++
     printf("%s:",i)
@@ -49,7 +58,11 @@ END {
     printf("    if false - %s\n",iffalse[i])
   }
   round=0
-  numrounds=10000
+  if (part==1) {
+    numrounds=20
+  } else {
+    numrounds=10000
+  }
   while (round++ < numrounds) {
     print("Round: ",round)
     i=0
@@ -70,10 +83,14 @@ END {
         if (operator[i] == "*") {
           new = old * operandx
         }
-        new = new % modulus
+        if (part==2) {
+          new = new % modulus
+        }
         printf("    Worry level is %sed with %s to %s.\n",operator[i],operandx,new)
-        #new = int(new/damping)
-        #printf("    Monkey gets bored with item. Worry level is divided by %s to %s.\n",damping,new)
+        if (part==1) {
+          new = int(new/damping)
+          printf("    Monkey gets bored with item. Worry level is divided by %s to %s.\n",damping,new)
+        }
         if ( (new % test[i]) == 0 ) {
           printf("    Current worry level is divisible by %s.\n",test[i])
           dm=iftrue[i]
