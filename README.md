@@ -186,3 +186,18 @@ part 2
 ```
 gawk -f day14-p2.awk day14-input | tail
 ```
+
+## Day 15
+part 1
+
+```
+gawk -v part=1 -v row=2000000 -f day15-v2.awk day15-input
+```
+
+part 2
+
+```
+gawk -v part=2 -f day15-v2.awk day15-input
+```
+
+Took 3'50" on my system.
