@@ -201,3 +201,127 @@ gawk -v part=2 -f day15-v2.awk day15-input
 ```
 
 Took 3'50" on my system.
+
+## Day 16
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 17
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 18
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 19
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 20
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 21
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 22
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 23
+part 1
+
+```
+```
+
+part 2
+
+```
+```
+
+
+## Day 24
+part 1
+
+```
+time gawk -v lim=700 -f day24.awk day24-input | tee day24-part1-out | tail
+```
+
+Took 4m15.653s on my system.
+
+part 2
+
+```
+time gawk -v part=2 -f day24.awk day24-input | tee day24-part2-out | tail
+```
+
+Took 14m35.139s on my system.
+
+## Day 25
+part 1
+
+```
+gawk -f day25.awk day25-input | tail -n1 | awk '{ print $NF; }'
+```
+
+part 2
+
+No need to do anything for the last star.
